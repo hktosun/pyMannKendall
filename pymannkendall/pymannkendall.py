@@ -158,7 +158,7 @@ def __sens_estimator(x):
     return d
 
 
-def sens_slope(x):
+def sens_slope(x_old):
     """
     This method proposed by Theil (1950) and Sen (1968) to estimate the magnitude of the monotonic trend. Intercept calculated using Conover, W.J. (1980) method.
     Input:
@@ -174,7 +174,7 @@ def sens_slope(x):
       >>> slope,intercept = mk.sens_slope(x)
     """
     res = namedtuple('Sens_Slope_Test', ['slope','intercept'])
-    x, c = __preprocessing(x)
+    x, c = __preprocessing(x_old)
 #     x, n = __missing_values_analysis(x, method = 'skip')
     n = len(x)
     slope = np.nanmedian(__sens_estimator(x))
